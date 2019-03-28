@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Rock Paper Scissors: ONLINE</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+
+</head>
+
+<body>
+
+
+  <div class="container">
+
+    <header>
+      <div class="row">
+        <div class="col-12-md">
+          <h1>Rock Paper Scissors: ONLINE!</h1>
+        </div>
+      </div>
+    </header>
+
+    <div class="row">
+      <div class="col-md-12">
+        <label for="userName">Enter Name:</label>
+        <input type="text" id="name" placeholder="Vapor">
+        <button type="button" id="start" name="name">Start</button>
+        <button type="button" id="reset" name="name">Reset</button>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- display turn -->
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-4">
+        <div class="box">
+          <div id="p1Name" class="row">
+            <h5 id="dispName01"></h5>
+          </div>
+          <div id="p1Rock" class="row">
+            <button class="testbtn" type="button" name="rock">Rock</button>
+          </div>
+          <div id="p1Paper" class="row">
+            <button class="testbtn" type="button" name="rock">Paper</button>
+          </div>
+          <div id="p1Scissors" class="row">
+            <button class="testbtn" type="button" name="rock">Scissors</button>
+          </div>
+          <div id="p1Score" class="row">
+            <h5 id="score01"></h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="box">
+          <div id="winner" class="row">
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="box">
+          <div id="p2Name" class="row">
+            <h5 id="dispName02"></h5>
+          </div>
+          <div id="p2Rock" class="row">
+
+          </div>
+          <div id="p2Paper" class="row">
+
+          </div>
+          <div id="p2Scissors" class="row">
+
+          </div>
+          <div id="p2Score" class="row">
+            <h5 id="score02"></h5>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <!-- chat display -->
+    </div>
+
+    <div class="row">
+      <input id="chat" type="text" name="chat" value="">
+      <button id="chatSend" type="button" name="chat">Send</button>
+    </div>
+
+
+
+  </div>
+
+  <script type="text/javascript" src="assets/javascript/rpso.js"></script>
+
+</body>
+
+</html>
