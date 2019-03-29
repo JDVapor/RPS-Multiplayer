@@ -15,100 +15,119 @@ var database = firebase.database();
 var playerOne;
 var playerTwo;
 
-var userConnected = 0;
-var playerNumber = 0;
-
-var player = "";
 var wins = 0;
 var losses = 0;
 var choice = "";
 var turn = 0;
 
-function fetchPlayers() {
+function fetchPlayers(cb) {
   database.ref('playerOne').once("value", function(snap) {
     playerOne = snap.val();
-    console.log(playerNumber);
   });
   database.ref('playerTwo').once("value", function(snap) {
     playerTwo = snap.val();
-    console.log(playerNumber);
   });
+  cb()
+}
+
+function createPlayer(player) {
+  console.log(player);
+    var playerName = $("#name").val();
+    console.log(playerName);
+    var playerObj = {
+      name: playerName,
+      wins: wins,
+      losses: losses,
+      choice: choice
+    };
+    database.ref(player).set(playerObj);
+
+    fetchPlayers(function(val){
+        console.log(val)
+      })
 }
 
 
 
 $("#start").on("click", function() {
   event.preventDefault();
+  fetchPlayers(function(){
+    if (!playerOne && !playerTwo){
+      createPlayer('playerOne');
+    } else if (!playerTwo && playerOne){
+      createPlayer('playerTwo');
+    } else {
+      console.log('Already two players.');
+    }
+  });
 
-  console.log(playerNumber);
-
-  if (playerNumber === 0) {
-    console.log("no players yet");
-    player = $("#name").val();
-
-    var playerOne = {
-      name: player,
-      wins: wins,
-      losses: losses,
-      choice: choice
-    };
-    database.ref('playerOne').set(playerOne);
-
-    userConnected++;
-
-    database.ref('playerNumber').set({
-
-      userCount: userConnected
-
-    });
-
-  } else if (playerNumber === 1) {
-    player = $("#name").val();
-
-    var playerTwo = {
-      name: player,
-      wins: wins,
-      losses: losses,
-      choice: choice
-    };
-    database.ref().set(playerTwo);
-
-    userConnected++;
-
-    database.ref('playerNumber').set({
-
-      userCount: userConnected
-
-    });
-
-  } else {alert("error: already two players")}
-
+  // if (playerNumber === 0) {
+  //   console.log("no players yet");
+  //   player = $("#name").val();
   //
-  // when player one changes something
-  //   ref('/playerOne').set(...)
+  //   var playerOne = {
+  //     name: player,
+  //     wins: wins,
+  //     losses: losses,
+  //     choice: choice
+  //   };
+  //   database.ref('playerOne').set(playerOne);
   //
-  // when player two changes something
-  //   ref('/playerTwo').set(...)
+  //   userConnected++;
   //
-
-  // /playerOne
-  // /playerTwo
+  //   database.ref('playerNumber').set({
   //
-
+  //     userCount: userConnected
   //
-  // if you're player two you need to know this
+  //   });
   //
-  //ref('/playerOne').on('change', function(snapshot) {
-
-  //  })
+  // } else if (playerNumber === 1) {
+  //   player = $("#name").val();
   //
-  // if you're player one you need to know this
+  //   var playerTwo = {
+  //     name: player,
+  //     wins: wins,
+  //     losses: losses,
+  //     choice: choice
+  //   };
+  //   database.ref().set(playerTwo);
   //
-  //ref('/playerTwo').on('change', function(snapshot) {
-
-  //  })
-
-
+  //   userConnected++;
+  //
+  //   database.ref('playerNumber').set({
+  //
+  //     userCount: userConnected
+  //
+  //   });
+  //
+  // } else {alert("error: already two players")}
+  //
+  // //
+  // // when player one changes something
+  // //   ref('/playerOne').set(...)
+  // //
+  // // when player two changes something
+  // //   ref('/playerTwo').set(...)
+  // //
+  //
+  // // /playerOne
+  // // /playerTwo
+  // //
+  //
+  // //
+  // // if you're player two you need to know this
+  // //
+  // //ref('/playerOne').on('change', function(snapshot) {
+  //
+  // //  })
+  // //
+  // // if you're player one you need to know this
+  // //
+  // //ref('/playerTwo').on('change', function(snapshot) {
+  //
+  // //  })
+  //
+  //
 
 });
 
@@ -131,19 +150,6 @@ database.ref().on("value", function(snapshot) {
   $("#score02").text("Wins: " + p2Wins + " Losses: " + p2Losses);
 
 })
-
-const reset = () => {
-  database.ref().set({
-
-    userCount: 0
-
-  });
-}
-
-$("#reset").on("click", function() {
-  reset();
-})
-
 
 
 
