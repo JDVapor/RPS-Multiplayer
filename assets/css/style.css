@@ -11,14 +11,26 @@
   margin-top: 15px;
 }
 
-#dispName {
+#dispName01 {
   padding: 3px;
   margin-left: 25px;
   margin-top: 10px;
 }
 
-#score {
+#dispName02 {
   padding: 3px;
   margin-left: 25px;
   margin-top: 10px;
+}
+
+#score01 {
+  padding: 3px;
+  margin-left: 20px;
+  margin-top: 25px;
+}
+
+#score02 {
+  padding: 3px;
+  margin-left: 20px;
+  margin-top: 25px;
 }
