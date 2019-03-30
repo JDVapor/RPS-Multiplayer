@@ -29,9 +29,12 @@
 
     <div class="row">
       <div class="col-md-12">
-        <label for="userName">Enter Name:</label>
-        <input type="text" id="name" placeholder="Vapor">
-        <button type="button" id="start" name="name">Start</button>
+        <h4 id="info"></h4>
+        <form id="userName">
+          <input id="playerName" type=text placeholder='Enter Name'>
+          <input id="start" type=submit value=Start>
+        </form>
+        <h5 id="whoTurn"></h5>
       </div>
     </div>
 
@@ -47,13 +50,13 @@
             <h5 id="dispName01"></h5>
           </div>
           <div id="p1Rock" class="row">
-            <button class="testbtn" type="button" name="rock">Rock</button>
+            <button class="testbtn" id="rock1" type="button" name="rock">Rock</button>
           </div>
           <div id="p1Paper" class="row">
-            <button class="testbtn" type="button" name="rock">Paper</button>
+            <button class="testbtn" id="paper1" type="button" name="paper">Paper</button>
           </div>
           <div id="p1Scissors" class="row">
-            <button class="testbtn" type="button" name="rock">Scissors</button>
+            <button class="testbtn" id="siz1" type="button" name="scissors">Scissors</button>
           </div>
           <div id="p1Score" class="row">
             <h5 id="score01"></h5>
@@ -63,8 +66,8 @@
 
       <div class="col-md-4">
         <div class="box">
-          <div id="winner" class="row">
-
+          <div class="row">
+            <h2 id=winner></h2>
           </div>
         </div>
       </div>
@@ -75,13 +78,13 @@
             <h5 id="dispName02"></h5>
           </div>
           <div id="p2Rock" class="row">
-            <button class="testbtn" type="button" name="rock">Rock</button>
+            <button class="testbtn" id="rock2" type="button" name="rock">Rock</button>
           </div>
           <div id="p2Paper" class="row">
-            <button class="testbtn" type="button" name="rock">Paper</button>
+            <button class="testbtn" id="paper2" type="button" name="paper">Paper</button>
           </div>
           <div id="p2Scissors" class="row">
-            <button class="testbtn" type="button" name="rock">Scissors</button>
+            <button class="testbtn" id="siz2" type="button" name="scissors">Scissors</button>
           </div>
           <div id="p2Score" class="row">
             <h5 id="score02"></h5>
@@ -92,15 +95,13 @@
     </div>
 
     <div class="row">
-      <!-- chat display -->
+      <div id="chatbox">
+        <form id="messageBar">
+          <input id="messageBox" type="text" />
+          <button id="chatInput" type="submit">Send</button>
+        </form>
+      </div>
     </div>
-
-    <div class="row">
-      <input id="chat" type="text" name="chat" value="">
-      <button id="chatSend" type="button" name="chat">Send</button>
-    </div>
-
-
 
   </div>
 
